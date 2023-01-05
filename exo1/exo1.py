@@ -3,6 +3,7 @@ class Robot():
     __power = False
     __current_speed = 0
     __battery_level = 0
+    time=0
     __states = ['shutown', 'running']
     
         
@@ -13,8 +14,8 @@ class Robot():
         if name:
             self.__name=name
             self.__power=False
-            self.__current_speed=__current_speed
-            self.__battery_level=__battery_level
+            self.__current_speed=self.__current_speed
+            self.__battery_level=self.__battery_level
             self.__states=self.__states[0]
     	
     def onoff(self):
@@ -23,8 +24,8 @@ class Robot():
       print("Le Robot est %s" %(self.__states[self.__power]))
       pass
 
-	
     def charge(self):
-      if self.__battery_level==0:self.__battery_level=100
+      if self.__battery_level==0:
+        while self.time<10:self.__battery_level+=10  
       print("La batterie est chargé à %s"%(self.battery_level))
       pass
