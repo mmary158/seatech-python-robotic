@@ -61,7 +61,7 @@ class Robot():
       if self.current_status==self.__states[1]:
         self.__current_speed=speed
         if self.__battery_level>0:
-          self.__battery_level-=50
+          self.__battery_level-=10
           if self.__battery_level<=0:
             self.charge()
 
