@@ -15,7 +15,7 @@ class Robot():
     __name = "<unnamed>"
     __power = False
     __current_speed = 0
-    __battery_level = 0
+    __battery_level = 100
     __states = ['shutdown', 'running']
 
     def __init__(self,name):
@@ -36,9 +36,12 @@ class Robot():
       print("Le Robot est %s" %(self.current_status))
   
     def charge(self):
+      barre='[]'
       while self.__battery_level<100:
           self.__battery_level+=10  
-          print("La batterie est chargé à %s"%(self.__battery_level),"%")
+          print(barre,"%s"%(self.__battery_level),"%")
+          barre+='[]'
+          #print("La batterie est chargé à %s"%(self.__battery_level),"%")
           time.sleep(1)
 
     def infovitesse(self):
@@ -57,15 +60,15 @@ class Robot():
     def vitesse(self,speed):
       if self.current_status==self.__states[1]:
         self.__current_speed=speed
+        if self.__battery_level>0:
+          self.__battery_level-=50
+          if self.__battery_level<=0:
+            self.charge()
 
-"""
-robot=Robot(name="Wall-E")
-robot.on()
-robot.etat()
-
-"""
-
-
-
-
-
+if __name__=='__main__':
+  robot=Robot(name="Wall-E")
+  robot.on()
+  robot.vitesse(100)
+  robot.etat()
+  robot.vitesse(150)
+  robot.etat()

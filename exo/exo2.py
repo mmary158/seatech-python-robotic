@@ -9,7 +9,7 @@
 from exo1 import Robot
 
 class Robot():
-    # Robot class content here
+     #Robot class content here
     pass
 
 class Human():   
@@ -19,10 +19,10 @@ class Human():
 class Cyborg(Robot, Human):
     name="<unnamed>"   
     sexe="<unnamed>"
-    def __init__(self, name, sexe):
-        if name   
-        Robot.__init__(name)
-        Human.__init__(sexe)
+    def __init__(self,name,sexe):
+        if name:   
+            Robot.__init__(self,name)
+            Human.__init__(self,sexe)
 
 
 cyborg = Cyborg('Deux Ex Machina','M')
