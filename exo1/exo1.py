@@ -24,7 +24,6 @@ class Robot():
             self.__power=Robot.__power
             self.__current_speed=Robot.__current_speed
             self.__battery_level=Robot.__battery_level
-            
     	
     def on(self):
       self.__power=True
