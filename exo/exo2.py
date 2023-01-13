@@ -22,48 +22,38 @@ class Human():
         print("aliment mangé:%s"%(self.estoma))
     
     def digest(self):
+        c=0
         while self.estoma!=[]:
+            c+=1
             a=self.estoma[0]
             if a!=[]:
                 self.estoma.remove(a)
                 print("aliment digéré:%s"%(a))
             time.sleep(4)
-            
-
-
 
 class Cyborg(Robot,Human):
-    courir=False
-    obstacleface=False
-    obstacledroite=False
-    obstaclegauche=False
-    saut=False
 
     def __init__(self,name,sexe):
         if name:   
             Robot.__init__(self,name)
             Human.__init__(self,sexe)
-
+"""
     def parcours(self):
         self.courir=True
         if self.obstacleface==True:
             if self.obstacledroite==True and self.obstaclegauche==True:
-                
-
-
-
-    
+"""              
 
 if __name__=='__main__':
     cyborg = Cyborg('Deux Ex Machina','M')
+    cyborg.on()
     cyborg.etat()
     print("sexe:%s"%(cyborg.sexe))
    # cyborg.charge()
     cyborg.eat('Lola')
-    cyborg.eat('chocolatine')
+    cyborg.eat(['chocolatine','pain au chocolat'])
     cyborg.eat('chat')
     cyborg.eat('chien')
     cyborg.eat('hamster')
     cyborg.digest()
-
     

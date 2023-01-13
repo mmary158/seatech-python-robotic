@@ -17,6 +17,7 @@ class Robot():
     __current_speed = 0
     __battery_level = 0
     __states = ['shutdown', 'running']
+    current_status=[]
 
     def __init__(self,name):
         if name:
@@ -67,4 +68,6 @@ class Robot():
 
 if __name__=='__main__':
   robot=Robot(name="Wall-E")
-  robot.charge()
+  robot.on()
+  robot.etat()
+  
