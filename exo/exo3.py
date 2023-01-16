@@ -59,6 +59,10 @@ class GroundVehicle(metaclass=ABCMeta):
         pass
     
     @abstractmethod
+    def recuperation(self):
+        pass
+
+    @abstractmethod
     def arret(self):
         pass
     pass
@@ -72,7 +76,7 @@ class UnderseaVehicle(metaclass=ABCMeta):
 
     def duree(self):
         print("temps pouvant rester sous l'eau")
-        time.sleep(5)
+        time.sleep(10)
         self.sorti()
         self.plonger()
         pass
@@ -84,7 +88,6 @@ class UnderseaVehicle(metaclass=ABCMeta):
     pass
 
 class UAV(UnmannedVehicle,AerialVehicle):
-    
     def debut_vol(self):
         print("UAV vole")
 
@@ -127,10 +130,15 @@ class UGV(UnmannedVehicle,GroundVehicle):
     
     def arret(self):
         print("UGV en arrêt")
+    
+    def recuperation(self):
+        print("récupération de la marchandise")
+        time.sleep(10)
 
     def debut_mission(self, mission):
         print('Début de mission :', mission)
         self.mise_en_marche()
+        self.recuperation()
 
     def fin_mission(self):
         print('Fin de mission')
