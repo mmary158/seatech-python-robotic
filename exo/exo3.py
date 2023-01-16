@@ -144,11 +144,11 @@ if __name__ == '__main__':
     print()
 
     ugv = UGV()
-    ugv.debut_mission("transport de 100 millions de scies commandés par Florian")
+    ugv.debut_mission("transport de 100 millions de scies commandé par Florian")
     ugv.fin_mission()
     print()
 
     uuv = UUV()
-    uuv.debut_mission("Exploration sous-marine effectué par Lola et ses chats")
+    uuv.debut_mission("Exploration sous-marine effectuée par Lola et ses chats")
     uuv.fin_mission()
     print()
