@@ -1,0 +1,102 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Jan 15 20:41:25 2023
+
+@author: maryl
+"""
+
+print("""
+      VOTRE PREMIER CONCEPT OBJET
+      L'encapsulation
+      Accesseurs et Mutateurs
+      Les accesseurs sont des méthodes qui permettent de retourner la valeur d’un attribut.
+      Les mutateurs permettent de modifier la valeur d’un attribut.
+      
+      Permet de masquer un certain nombre d’attributs et de 
+      méthodes afin de garder une cohérence dans la gestion de
+      l’objet. Cela dissocie ce qui est interne à l’objet de ce qui est 
+      destiné à être utilisé par d’autres objets ou l’utilisateur
+      """)
+      
+class Robot():
+    current_speed = 0
+    
+    def stop(self):
+      self.current_speed = 0
+      
+    def move(self, speed):
+      if type(speed) == int:
+        self.current_speed = speed
+      
+    def speed(self):
+      return self.current_speed
+
+print("""
+      ATTRIBUTS PRIVES/PUBLICS
+      double underscore PRIVATE
+      aucun underscore PUBLIC
+      simple underscore PROTECTED
+      
+      IMPORTANT : 
+      En Python les notions de
+      protected n'existent pas. Ce nommage est
+      une convention pour inciter le développeur à
+      ne pas utiliser cet attribut
+
+      """)
+      
+class Robots():
+    # private attributes
+    __name = '<unnamed>'
+    __current_speed = 0
+    # public attribute
+    mission = '<unknown>'
+    # protected attribute
+    _secret = '42'
+    
+    # Simple style getter / setter
+    def stop(self):
+      self.__current_speed = 0
+    
+    def move(self, speed):
+      if type(speed) == int:
+        self.__current_speed = speed
+      
+    def speed(self):
+      return self.__current_speed
+    
+    # Python style getter / setter 
+    @property
+    def name(self):
+        return self.__name
+    
+    @name.setter
+    def name(self,new_name):
+        self.__name = new_name
+
+r = Robots()
+r.name = "Termonator"
+r.mission = "Kill them all"
+r.move(100)
+print(r.name + "\nSpeed:", r.speed())
+print("Mission", r.mission)
+print("Secret", r._secret)
+
+print("""
+      PROTEGER SA CLASSE AVEC LES __slots__
+      """)
+
+class Robotss:
+    __slots__ = ('name', 'power')
+    
+    def __init__(self, name='', power=False):
+        self.name = name
+        self.power = power
+
+r = Robotss(name='Roger', power=False)
+r.name = 'Super Roger'
+print(r.name)
+# Will throw an error
+r.hacked = '000101111001'
+print(r.hacked)
+
