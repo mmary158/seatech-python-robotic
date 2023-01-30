@@ -29,25 +29,17 @@ class SeatechRobot(Robot):
         self.__rightMotor = RobotMotor('right wheel motor')
         self.bumperleft=TouchSensor("bumper_left")
         self.bumperright=TouchSensor("bumper_right")
-        self.clifffrontleft=DistanceSensor("cliff_front_left")
-        self.clifffrontright=DistanceSensor("cliff_front_right")
-        self.cliffleft=DistanceSensor("cliff_left")
-        self.cliffright=DistanceSensor("cliff_right")
 
     def bump(self): # détecter si on a foncer dans un obstacle
         if self.bumperleft.getValue()==1 or self.bumperright.getValue()==1:
             self.vitesse=-self.vitesse
+            print("a bumpe")
             
-
-    def distance(self): #détecter la présence d'un objet
-        print(self.cliffright)
-        
-
     def run(self):
         self.__leftMotor.setVelocity(self.vitesse)
         self.__rightMotor.setVelocity(self.vitesse)
         self.bump()
-        #self.distance()
+        
         
 # create the Robot instance.
 robot = SeatechRobot()
