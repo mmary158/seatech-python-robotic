@@ -21,23 +21,25 @@ class RobotMotor(Motor):
         self.max_speed = self.getMaxVelocity()
 
 class SeatechRobot(Robot):
-    vitesse=0
     def __init__(self):
-        self.vitesse=16.129
         super().__init__()
+        self.vitesse=16.129
         self.__leftMotor = RobotMotor('left wheel motor')
         self.__rightMotor = RobotMotor('right wheel motor')
         self.bumperleft=TouchSensor("bumper_left")
         self.bumperright=TouchSensor("bumper_right")
 
+
     def bump(self): # détecter si on a foncer dans un obstacle
-        if self.bumperleft.getValue()==1 or self.bumperright.getValue()==1:
+        if self.bumperleft.getValue()>0 or self.bumperright.getValue()>0:
             self.vitesse=-self.vitesse
-            print("a bumpe")
+    
+    def toutdroit(self,vitesse):
+        self.__leftMotor.setVelocity(vitesse)
+        self.__rightMotor.setVelocity(vitesse)
             
     def run(self):
-        self.__leftMotor.setVelocity(self.vitesse)
-        self.__rightMotor.setVelocity(self.vitesse)
+        self.toutdroit(self.vitesse)
         self.bump()
         
         
